@@ -1,41 +1,49 @@
-#Imported modules
+# Imported modules
 import random
 import csv
 import os
 
-#List and Dictionaries 
+# List of machine dictionaries
 machines = [
     {"id": 1, "name": "Laser Welder"},
     {"id": 2, "name": "Conveyor"},
     {"id": 3, "name": "Cooling System"}
 ]
-#Generate random temperature and status values for each machine
-for machine in machines:
-    machine['temperature'] = random.randint(60, 110)  # Random temperature between 60 and 110 degrees Celsius
 
-#For loop to iterate through the machines and check their temperature status
+# Function to determine machine status
+def get_machine_status(temperature):
+    if temperature < 80:
+        return "NORMAL"
+    elif temperature < 100:
+        return "WARNING"
+    else:
+        return "CRITICAL"
+
+
+# Generate random temperatures and evaluate each machine
 for machine in machines:
-    if machine['temperature'] < 80:
-        machine['status'] = "NORMAL"
+    machine["temperature"] = random.randint(60, 110)
+    machine["status"] = get_machine_status(machine["temperature"])
+
+    # Display detailed machine status
+    if machine["status"] == "NORMAL":
         print(f"{machine['name']} is operating normally! Current temperature: {machine['temperature']}°C | NORMAL")
-    elif machine['temperature'] < 100:
-        machine['status'] = "WARNING"
+    elif machine["status"] == "WARNING":
         print(f"{machine['name']} temperature is elevated! Current temperature: {machine['temperature']}°C | WARNING")
     else:
-        machine['status'] = "CRITICAL"
         print(f"{machine['name']} is in critical zone! Current temperature: {machine['temperature']}°C | CRITICAL")
 
-#Check if the CSV file exists and has data
+
+# Check whether CSV already contains data
 file_has_data = (
     os.path.exists("machine_readings.csv")
     and os.path.getsize("machine_readings.csv") > 0
 )
 
-# To write CSV file with machine data
-with open("machine_readings.csv", "a", newline='') as file:
+# Save machine readings to CSV
+with open("machine_readings.csv", "a", newline="") as file:
     writer = csv.writer(file)
 
-    #If the file does not have data, write the header row
     if not file_has_data:
         writer.writerow(["Machine ID", "Machine Name", "Temperature", "Status"])
 
@@ -45,11 +53,11 @@ with open("machine_readings.csv", "a", newline='') as file:
             machine["name"],
             machine["temperature"],
             machine["status"]
-    ])
+        ])
 
-#Read the CSV file and print its contents
+# Read and display saved CSV records
 with open("machine_readings.csv", "r", newline="") as file:
     reader = csv.DictReader(file)
 
     for row in reader:
-        print(f"{row['Machine Name']} | {row['Temperature']}°C | {row['Status']}")       
+        print(f"{row['Machine Name']} | {row['Temperature']}°C | {row['Status']}")

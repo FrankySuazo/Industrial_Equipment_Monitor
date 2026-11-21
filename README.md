@@ -20,10 +20,10 @@ A Python-based industrial equipment monitoring application designed to simulate 
 
 ## Development Roadmap
 
-- [✅] Milestone 1: Python machine dictionaries and terminal application
-- [ ] Milestone 2: Machine monitoring logic
-- [ ] Milestone 3: Data storage and history
-- [ ] Milestone 4: REST API
+- ✅ Milestone 1: Python machine dictionaries and terminal application
+- ✅ Milestone 2: Machine monitoring logic
+- ✅ Milestone 3: Data storage and history
+- ✅ Milestone 4: REST API
 - [ ] Milestone 5: Web dashboard
 - [ ] Milestone 6: Testing and deployment
 
