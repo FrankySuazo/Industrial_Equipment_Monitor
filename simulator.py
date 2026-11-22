@@ -1,6 +1,7 @@
 #Import the random module to generate random temperatures for the machines
 import random
 
+
 #List of machine dictionaries
 machines = [
     {"id": 1, "name": "Laser Welder"},
