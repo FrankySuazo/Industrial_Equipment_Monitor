@@ -29,3 +29,12 @@ def generate_machine_readings():
         })
 
     return readings
+
+def get_critical_machines(machines):
+    high_temp = []
+
+    for machine in machines:
+        if machine["temperature"] >= 100:
+            high_temp.append(machine)
+
+    return high_temp
