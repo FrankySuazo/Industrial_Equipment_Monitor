@@ -1,11 +1,15 @@
+#Import the random module to generate random temperatures for the machines
 import random
 
+#List of machine dictionaries
 machines = [
     {"id": 1, "name": "Laser Welder"},
     {"id": 2, "name": "Conveyor"},
     {"id": 3, "name": "Cooling System"}
 ]
 
+
+# Function to determine machine status
 def get_machine_status(temperature):
     if temperature < 80:
         return "NORMAL"
@@ -15,6 +19,7 @@ def get_machine_status(temperature):
         return "CRITICAL"
 
 
+# Generate random temperatures and evaluate each machine
 def generate_machine_readings():
     readings = []
 
@@ -30,6 +35,8 @@ def generate_machine_readings():
 
     return readings
 
+
+# Function to return the list of machines that are in a critical state
 def get_critical_machines(machines):
     high_temp = []
 

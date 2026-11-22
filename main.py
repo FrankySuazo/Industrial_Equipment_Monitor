@@ -7,6 +7,7 @@ from simulator import generate_machine_readings, get_critical_machines
 #variable to hold the list of machines
 app = FastAPI()
 
+readings = generate_machine_readings()
 
 #function to return a welcome message when the root endpoint is accessed
 @app.get("/")
@@ -15,7 +16,7 @@ def home():
 
 @app.get("/machines")
 def get_machines():
-    return generate_machine_readings()
+    return readings
 
 
 #function to return the history of machine readings from the CSV file
@@ -55,13 +56,12 @@ def get_critical_machine_readings():
 @app.get("/machines/{machine_id}")
 def get_machine_by_id(machine_id: int):
     readings = generate_machine_readings()
-    
     for machine in readings:
         if machine["id"] == machine_id:
             return machine
 
     raise HTTPException(
-    status_code=404,
-    detail="Machine not found"
+        status_code=404,
+        detail="Machine not found"
 )
 
