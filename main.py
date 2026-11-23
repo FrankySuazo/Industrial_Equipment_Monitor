@@ -75,3 +75,4 @@ def get_machine_by_id(machine_id: int):
         detail="Machine not found"
 )
 
+
