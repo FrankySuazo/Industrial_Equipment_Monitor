@@ -8,3 +8,6 @@ Machine ID,Machine Name,Temperature,Status
 1,Laser Welder,77,NORMAL
 2,Conveyor,71,NORMAL
 3,Cooling System,108,CRITICAL
+1,Laser Welder,94,WARNING
+2,Conveyor,108,CRITICAL
+3,Cooling System,110,CRITICAL

@@ -3,6 +3,7 @@ from fastapi import FastAPI, HTTPException
 import csv
 from pathlib import Path 
 from simulator import generate_machine_readings, get_critical_machines
+from storage import save_machine_readings
 
 
 #variable to hold the list of machines
@@ -58,7 +59,14 @@ def get_critical_machine_readings():
 @app.post("/machines/refresh")
 def refresh_machine_readings():
     global readings
+
+    # Generate new machine temperatures
     readings = generate_machine_readings()
+
+    # Save the new readings to the CSV file
+    save_machine_readings(readings)
+
+    # Return the updated readings
     return readings
 
       

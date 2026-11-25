@@ -16,10 +16,10 @@ def save_machine_readings(machines):
         if not file_has_data:
             writer.writerow(["Machine ID", "Machine Name", "Temperature", "Status"])
 
-    for machine in machines:
-        writer.writerow([
-            machine["id"],
-            machine["name"],
-            machine["tempertature"],
-            machine["status"]
-        ])
+        for machine in machines:
+            writer.writerow([
+                machine["id"],
+                machine["name"],
+                machine["temperature"],
+                machine["status"]
+            ])
