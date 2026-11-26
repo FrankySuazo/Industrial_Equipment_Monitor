@@ -84,3 +84,12 @@ def get_machine_by_id(machine_id: int):
 )
 
 
+@app.get("/machines/summary")
+def get_machine_summary():
+    normal = 0
+    warning = 0
+    critical = 0
+
+for machine in readings:
+
+
