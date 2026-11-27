@@ -91,5 +91,5 @@ def get_machine_summary():
     critical = 0
 
 for machine in readings:
-
+    pass
 
