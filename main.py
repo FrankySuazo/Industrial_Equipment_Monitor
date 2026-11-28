@@ -83,7 +83,7 @@ def get_machine_by_id(machine_id: int):
         detail="Machine not found"
 )
 
-
+#Count the machine status
 @app.get("/machines/summary")
 def get_machine_summary():
     normal = 0
